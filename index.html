@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Portfolio Charts</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 700px; margin: 20px auto; padding: 10px; }
+  section { margin-bottom: 30px; }
+  h2 { margin-bottom: 10px; }
+</style>
+</head>
+<body>
+  <section>
+    <h2>Skill Progress Over Time</h2>
+    <canvas id="skillChart"></canvas>
+  </section>
+
+  <section>
+    <h2>Projects Completed Each Year</h2>
+    <canvas id="projectChart"></canvas>
+  </section>
+
+  <section>
+    <h2>Internship Impact</h2>
+    <canvas id="internshipChart"></canvas>
+  </section>
+
+<script>
+  const skillData = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    datasets: [{
+      label: 'Python', data: [3,4,5,6,7,8], borderColor: 'blue', fill: false
+    }, {
+      label: 'JavaScript', data: [2,3,4,5,6,7], borderColor: 'orange', fill: false
+    }]
+  };
+
+  const projectData = {
+    labels: ['2019','2020','2021','2022','2023'],
+    datasets: [{ label: 'Projects Completed', data: [2,4,6,5,7], backgroundColor: 'green' }]
+  };
+
+  const internshipData = {
+    labels: ['Communication','Coding','Teamwork','Problem Solving'],
+    datasets: [{ label: 'Skill Improvement', data: [8,9,7,6], backgroundColor: ['red','blue','orange','purple'] }]
+  };
+
+  new Chart(document.getElementById('skillChart'), { type: 'line', data: skillData, options: {responsive:true, scales:{ y:{ beginAtZero:true } } } });
+  new Chart(document.getElementById('projectChart'), { type: 'bar', data: projectData, options: {responsive:true, scales:{ y:{ beginAtZero:true, stepSize:1 } } } });
+  new Chart(document.getElementById('internshipChart'), { type: 'bar', data: internshipData, options: {responsive:true, scales:{ y:{ beginAtZero:true, max:10 } } } });
+</script>
+</body>
+</html>
